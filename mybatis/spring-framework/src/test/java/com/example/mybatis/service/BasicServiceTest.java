@@ -1,5 +1,6 @@
 package com.example.mybatis.service;
 
+import com.example.mybatis.BasicService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

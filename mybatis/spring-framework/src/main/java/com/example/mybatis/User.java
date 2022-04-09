@@ -1,4 +1,4 @@
-package com.example.mybatis.domain;
+package com.example.mybatis;
 
 public class User {
     private int id;

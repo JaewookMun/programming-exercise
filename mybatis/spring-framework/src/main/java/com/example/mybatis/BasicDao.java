@@ -1,7 +1,5 @@
-package com.example.mybatis.dao;
+package com.example.mybatis;
 
-import com.example.mybatis.domain.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

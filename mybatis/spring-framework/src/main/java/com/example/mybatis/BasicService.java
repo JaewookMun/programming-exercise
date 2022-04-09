@@ -1,7 +1,7 @@
-package com.example.mybatis.service;
+package com.example.mybatis;
 
-import com.example.mybatis.dao.BasicDao;
-import com.example.mybatis.domain.User;
+import com.example.mybatis.BasicDao;
+import com.example.mybatis.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
