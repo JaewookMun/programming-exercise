@@ -3,11 +3,13 @@ package com.example.jpaboard.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(exclude = {"member"})
 @Getter
 public class Board extends BaseTimeEntity {
 
