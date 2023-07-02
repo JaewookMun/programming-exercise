@@ -1,9 +1,8 @@
 package com.example.jpaboard.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.example.jpaboard.controller.dto.BoardUpdate;
+import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -18,6 +17,8 @@ public class Board extends BaseTimeEntity {
     private Long id;
 
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     private int viewCount;
@@ -30,5 +31,10 @@ public class Board extends BaseTimeEntity {
         this.title = title;
         this.content = content;
         this.member = member;
+    }
+
+    public void modifiedWith(BoardUpdate boardUpdate) {
+        title = boardUpdate.getTitle();
+        content = boardUpdate.getContent();
     }
 }

@@ -1,8 +1,8 @@
 package com.example.jpaboard.repository;
 
+import com.example.jpaboard.controller.dto.BoardUpdate;
 import com.example.jpaboard.domain.Board;
 import com.example.jpaboard.domain.Member;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,10 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -61,7 +58,7 @@ class BoardRepositoryTest {
     }
 
     @Test
-    public void 게시물_조회() {
+    public void 게시물_목록조회() {
         // given
         Member member = new Member("tester", "password");
         memberRepository.save(member);
@@ -92,5 +89,83 @@ class BoardRepositoryTest {
         for (Board board : currentPage.getContent()) {
             System.out.println(board);
         }
+    }
+
+    @Test
+    public void 개별게시물_조회() throws InterruptedException {
+        //given
+        Member member = new Member("james", "1234");
+        memberRepository.save(member);
+
+        String title = "Spring Data JPA in Spring boot";
+        String content = "it's very nice";
+        Board board = new Board(title, content, member);
+        boardRepository.save(board);
+
+        em.flush();
+        em.clear();
+        System.out.println("------------------------------------------");
+
+        //when
+        Thread.sleep(20000);
+        boardRepository.increaseViewCount(board.getId());
+
+        //then
+        Board found = boardRepository.findById(board.getId()).get();
+
+        assertThat(found.getViewCount()).isEqualTo(1);
+        assertThat(found.getCreatedDate()).isEqualTo(found.getModifiedDate());
+    }
+
+    @Test
+    public void 변경감지_테스트() {
+        //given
+        Member member = new Member("james", "1234");
+        memberRepository.save(member);
+
+        String title = "Spring Data JPA in Spring boot";
+        String content = "it's very nice";
+        Board board = new Board(title, content, member);
+        boardRepository.save(board);
+
+        em.flush();
+        em.clear();
+
+        // when
+        BoardUpdate update = new BoardUpdate();
+        update.setTitle("test");
+        update.setContent("test content");
+
+        Board found = boardRepository.findById(board.getId()).get();
+        found.modifiedWith(update);
+    }
+
+    /**
+     * Application 과 별개 테스트 - 쿼리 실행 확인용
+     */
+    @Test
+    public void jpql_fetch_join_test() {
+        Member member = new Member("james", "1234");
+        em.persist(member);
+
+        String title = "Spring Data JPA in Spring boot";
+        String content = "it's very nice";
+        Board board = new Board(title, content, member);
+        em.persist(board);
+
+        em.flush();
+        em.clear();
+
+        Board foundBoard = em.createQuery("select b from Board b join b.member", Board.class)
+                .getSingleResult();
+
+        System.out.println(foundBoard + foundBoard.getMember().toString());
+
+        em.flush();
+        em.clear();
+
+        Board foundBoard2 = em.createQuery("select b from Board b join fetch b.member", Board.class).getSingleResult();
+
+        System.out.println(foundBoard2 + foundBoard2.getMember().toString());
     }
 }

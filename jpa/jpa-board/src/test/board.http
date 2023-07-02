@@ -1,0 +1,23 @@
+### GET init
+GET http://localhost:8080/init
+Accept: application/json
+
+### GET request with pagination parameter
+GET http://localhost:8080/boards?page=0&size=5&sort=createdDate,desc&sort=title,asc
+Accept: application/json
+
+### GET request
+GET http://localhost:8080/boards/1
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:8080/boards/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "modified title",
+  "content": "wow"
+}
+
+
