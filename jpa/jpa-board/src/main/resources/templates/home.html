@@ -1,10 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>jpa-board</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header :: header">
 <body>
-
+    <div th:replace="fragment/navigator :: navigator" />
+    <div>
+        <table id="dataJpaTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>title</th>
+                    <th>writer</th>
+                    <th>createdDate</th>
+                    <th>modifiedDate</th>
+                    <th>viewCount</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </body>
+<script>
+    let dataJpaTable;
+
+    // document on load
+    $(function () {
+        initDataTable();
+
+        dataJpaTable.on('draw.dt', function() {
+            console.log('dataJpaTable: ', dataJpaTable);
+
+            $('#dataJpaTable tbody tr').css('cursor', 'pointer');
+            $('#dataJpaTable tbody tr').hover(
+                function() {
+                    $(this).css('background-color', '#b7bfe3');
+                }, function () {
+                    $(this).css('background-color', '');
+            });
+
+        });
+
+    });
+
+    function initDataTable() {
+        const order = [];
+        order.push([3, 'desc']);
+        order.push([1, 'asc']);
+
+        dataJpaTable = $('#dataJpaTable').DataTable( {
+            serverSide: true,
+            processing: true,
+            searching: false,
+            lengthMenu: [ 10, 15, 20, 25 ],
+            columnDefs: getDataJpaTableColumns(),
+            order: order,
+            ajax: {
+                url: '/boards',
+                data: function(d) {
+                    return getParameters(d);
+                },
+                dataFilter: function(resource){
+                    const json = {};
+                    let res = jQuery.parseJSON(resource);
+                    json.recordsTotal = res.totalElements;
+                    json.recordsFiltered = res.totalElements;
+                    json.data = res.content;
+
+                    // [for debug]
+                    // console.log(res);
+                    // console.log(json);
+
+                    return JSON.stringify(json); // return JSON string
+                },
+                // dataSrc: function (res) {
+                //     console.log('dataSrc')
+                //     console.log(res);
+                //
+                //     return res.content;
+                // }
+            }
+        });
+    }
+
+    // [ref]: page=0&size=5&sort=createdDate,desc&sort=title,asc
+    function getParameters(d) {
+        // console.log(d);
+        // console.log('dataJpaTable: ', dataJpaTable);
+
+        const parameters = {};
+        parameters.page = Math.floor(d.start/d.length);
+        parameters.size = d.length;
+
+        let sortString = '';
+        for(let i=0; i<d.order.length; i++) {
+            if(i != 0) sortString += '&';
+            let idx = d.order[i].column;
+            let dir = d.order[i].dir;
+
+            sortString += d.columns[idx].name + ',' + dir;
+        }
+        parameters.sort = sortString;
+
+        parameters.toString = function () {
+            return 'page=' + this.page + '&size=' + this.size + '&sort=' + this.sort;
+        }
+
+        return parameters.toString();
+    }
+
+    // function getPaginationQueryString() {
+    //     const queryString = [];
+    //
+    //     let page = 0;
+    //     let size = 5;
+    //     let sort = 'createdDate,desc';
+    //
+    //     queryString.push('page=', page);
+    //     queryString.push('&');
+    //     queryString.push('size=', size);
+    //     queryString.push('&');
+    //     queryString.push('sort=',sort)
+    //
+    //     return queryString.join('');
+    // }
+
+    function getDataJpaTableColumns() {
+        const columns = [
+            {
+                name: 'no',
+                orderable: false,
+                render: function (data, type, row, meta) {
+                    // [for Data-Setup]
+                    // console.log('row: ', row);
+                    // console.log('meta: ', meta)
+                    return meta.settings._iDisplayStart + meta.row + 1;
+                }
+            },
+            {
+                name: 'title',
+                render: function (data, type, row) {
+                    return row.title;
+                }
+            },
+            {
+                name: 'member',
+                render: function (data, type, row) {
+                    return row.writer;
+                }
+            },
+            {
+                name: 'createdDate',
+                render: function (data, type, row) {
+                    return row.createdDate;
+                }
+            },
+            {
+                name: 'modifiedDate',
+                render: function (data, type, row) {
+                    return row.modifiedDate;
+                }
+            },
+            {
+                name: 'viewCount',
+                render: function (data, type, row) {
+                    return row.viewCount;
+                }
+            }
+        ];
+        columns.forEach((columns, idx) => columns.targets = idx);
+
+        return columns;
+    }
+
+</script>
 </html>

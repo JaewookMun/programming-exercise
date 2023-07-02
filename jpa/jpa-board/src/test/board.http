@@ -3,7 +3,7 @@ GET http://localhost:8080/init
 Accept: application/json
 
 ### GET request with pagination parameter
-GET http://localhost:8080/boards?page=0&size=5&sort=createdDate,desc&sort=title,asc
+GET http://localhost:8080/boards?page=1&size=5&sort=createdDate,desc&sort=title,asc
 Accept: application/json
 
 ### GET request

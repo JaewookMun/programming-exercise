@@ -164,7 +164,8 @@ class BoardRepositoryTest {
         em.flush();
         em.clear();
 
-        Board foundBoard2 = em.createQuery("select b from Board b join fetch b.member", Board.class).getSingleResult();
+        Board foundBoard2 = em.createQuery("select b from Board b join fetch b.member", Board.class)
+                .getSingleResult();
 
         System.out.println(foundBoard2 + foundBoard2.getMember().toString());
     }

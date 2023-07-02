@@ -20,6 +20,9 @@ public class BoardApiController {
 
     @GetMapping("/boards")
     public Page<BoardDto> boards(Pageable pageable) {
+        System.out.println("page: " + pageable.getPageNumber());
+        System.out.println("size: " + pageable.getPageSize());
+        System.out.println("sort: " + pageable.getSort());
 
         return boardRepository.findAll(pageable).map(BoardDto::new);
     }
