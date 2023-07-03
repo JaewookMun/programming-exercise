@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="common/fragment/header :: header" />
+
+<style>
+body .h-navigator {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+body .container {
+    width: 80%;
+    padding-top: 4rem;
+    border-top: 10px solid;
+    border-radius: 20px;
+    border-image: linear-gradient(to right, #e2e3ffbe, #6064e285, #0f33e0aa);
+    border-image-slice: 1;
+}
+</style>
+<body>
+    <div th:replace="common/fragment/navigator :: navigator" />
+    <div class="container">
+        <div layout:fragment="content"></div>
+    </div>
+    <div th:replace="common/fragment/footer :: footer" />
+</body>
+</html>

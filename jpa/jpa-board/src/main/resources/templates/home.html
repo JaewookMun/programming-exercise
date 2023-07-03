@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragment/header :: header">
-<body>
-    <div th:replace="fragment/navigator :: navigator" />
-    <div>
-        <table id="dataJpaTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>title</th>
-                    <th>writer</th>
-                    <th>createdDate</th>
-                    <th>modifiedDate</th>
-                    <th>viewCount</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+<div layout:fragment="content">
+    <table id="dataJpaTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>title</th>
+                <th>writer</th>
+                <th>createdDate</th>
+                <th>modifiedDate</th>
+                <th>viewCount</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
 <script>
     let dataJpaTable;
 
@@ -35,7 +32,7 @@
                     $(this).css('background-color', '#b7bfe3');
                 }, function () {
                     $(this).css('background-color', '');
-            });
+                });
 
         });
 
@@ -170,6 +167,6 @@
 
         return columns;
     }
-
 </script>
+</div>
 </html>
