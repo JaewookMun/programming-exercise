@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+<div layout:fragment="content">
+    <input type="hidden" name="identifier" th:value="${id}">
+
+    <div layout:include="common/fragment/boardForm :: boardForm"/>
+
+
+<script>
+    $(function() {
+        console.log($('input[type="hidden"]').val());
+    });
+</script>
+</div>
+</html>

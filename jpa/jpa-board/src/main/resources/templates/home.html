@@ -26,7 +26,6 @@
         dataJpaTable.on('draw.dt', function() {
             console.log('dataJpaTable: ', dataJpaTable);
 
-            $('#dataJpaTable tbody tr').css('cursor', 'pointer');
             $('#dataJpaTable tbody tr').hover(
                 function() {
                     $(this).css('background-color', '#b7bfe3');
@@ -34,8 +33,13 @@
                     $(this).css('background-color', '');
                 });
 
-        });
+            $('#dataJpaTable tbody tr .th-title').css('cursor', 'pointer');
+            $('#dataJpaTable tbody tr .th-title').on('click', function() {
+                let boardId = $(this).children('.board-identifier').data('id');
+                location.href = 'detail/' + boardId;
+            });
 
+        });
     });
 
     function initDataTable() {
@@ -134,8 +138,9 @@
             },
             {
                 name: 'title',
+                className: 'th-title',
                 render: function (data, type, row) {
-                    return row.title;
+                    return '<div class="board-identifier" data-id="' + row.boardId + '">' + row.title + '</div>';
                 }
             },
             {
