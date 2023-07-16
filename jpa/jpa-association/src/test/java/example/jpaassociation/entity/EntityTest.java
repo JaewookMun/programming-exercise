@@ -110,7 +110,7 @@ public class EntityTest {
     }
 
     @Test
-    public void 연관관계_unique_jpql() {
+    public void 연관관계_jpql() {
         List<DeptUnique> resultList = em.createQuery("select d from DeptUnique d join fetch d.parent p", DeptUnique.class)
                 .getResultList();
 
