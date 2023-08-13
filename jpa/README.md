@@ -1,9 +1,11 @@
-## Practice on Spring Data JPA
+## Practice on JPA in Spring
+JPA를 활용한 스프링 프로젝트 저장소
 
+<br>
 
 ### 1. Abstract
 
-    - jpa-board : simple board function
+    - jpa-board : simple board function using Spring Data jpa framework
     - jpa-association : jpa association test on PK and UK condition
 
 <br><br>
