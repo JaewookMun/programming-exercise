@@ -4,7 +4,7 @@ JPA를 활용한 스프링 프로젝트 저장소
 <br>
 
 ### 1. Abstract
-
+    - booklending : simple application using Spring Data jpa and Querydsl
     - jpa-board : simple board function using Spring Data jpa framework
     - jpa-association : jpa association test on PK and UK condition
 
@@ -12,27 +12,37 @@ JPA를 활용한 스프링 프로젝트 저장소
 
 ### 2. Details
 
+### booklending
+- 도메인 분석 및 설계 : <br>
+  https://github.com/JaewookMun/book-study/tree/main/oop-collaborations
+- 구현
+  - '책을 대출하라'라는 api를 호출하면 호출 시 제공된 요청정보를 활용해서 책정보를 제공
+  - 가상의 도서관이 보유하고 있는 모든 책 정보는 DB에 저장되어 있다고 가정
+  - 요청자와 상호협력 없이 현재 대여중이면 예약을 신청하고 보유한 책이 아니라면 구매하는 것으로 구현 제한
+
+- Description
+  - Querydsl을 활용하여 동적 쿼리 구현
+  
+<br>
+
 ### jpa-board
 
 <br>
 
 ### jpa-association
 
-- Domain relationship
-  
-  ![image](https://github.com/JaewookMun/spring-exercise/assets/84655268/14593e78-33cd-43c1-9656-da9a7bf5d355)
+- Domain relationship <br>
+  <img src="https://github.com/JaewookMun/spring-exercise/assets/84655268/14593e78-33cd-43c1-9656-da9a7bf5d355" width="60%">
 
 <br>
 
-- Domain Model
-  
-  ![image](https://github.com/JaewookMun/spring-exercise/assets/84655268/a12c9169-ecf2-4461-abf9-28f526ee816d)
+- Domain Model <br>
+  <img src="https://github.com/JaewookMun/spring-exercise/assets/84655268/a12c9169-ecf2-4461-abf9-28f526ee816d" width="60%">
 
 <br>
 
-- ERD
-  
-  ![image](https://github.com/JaewookMun/spring-exercise/assets/84655268/245cba4f-a174-4150-a22e-77e3a30cb891)
+- ERD <br>
+  <img src="https://github.com/JaewookMun/spring-exercise/assets/84655268/245cba4f-a174-4150-a22e-77e3a30cb891" width="60%">
 
 <br>
 
