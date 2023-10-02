@@ -14,7 +14,7 @@ JPA를 활용한 스프링 프로젝트 저장소
 
 ### booklending
 - 도메인 분석 및 설계 : <br>
-  https://github.com/JaewookMun/book-study/tree/main/oop-collaborations
+  https://github.com/JaewookMun/book-study/tree/main/oop-collaborations#readme
 - 구현
   - '책을 대출하라'라는 api를 호출하면 호출 시 제공된 요청정보를 활용해서 책정보를 제공
   - 가상의 도서관이 보유하고 있는 모든 책 정보는 DB에 저장되어 있다고 가정
