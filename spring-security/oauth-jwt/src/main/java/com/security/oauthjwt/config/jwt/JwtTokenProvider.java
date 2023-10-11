@@ -16,6 +16,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Arrays;
@@ -44,10 +47,13 @@ public class JwtTokenProvider {
     private static Long REFRESH_TOKEN_VALID_PERIOD = 60 * 60 * 24 * 30L;
 
     @PostConstruct
-    private void init() {
-        keyBytes = Base64.getEncoder().encode(secretKey.getBytes());
+    private void init() throws NoSuchAlgorithmException {
+        // SHA-256 해시알고리즘으로 해싱처리
+        byte[] hash = MessageDigest.getInstance("SHA-256").digest(secretKey.getBytes(StandardCharsets.UTF_8));
+        keyBytes = Base64.getEncoder().encode(hash);
         hs256 = Jwts.SIG.HS256;
     }
+
 
     // create jwt
     public TokenDto create(Long userId) {
