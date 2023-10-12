@@ -88,9 +88,9 @@ public class JwtTokenProvider {
         log.info("validate token: {}", token);
         try {
             // Parse the compact JWS
-            return !getPayloadOf(token)
-                        .getExpiration().before(Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC)));
+            getPayloadOf(token);
 
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -98,7 +98,8 @@ public class JwtTokenProvider {
     }
 
     private Claims getPayloadOf(String token) {
-        return Jwts.parser().verifyWith(Keys.hmacShaKeyFor(keyBytes)).build()
+        return Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(keyBytes)).build()
                 .parseSignedClaims(token).getPayload();
     }
 
