@@ -5,11 +5,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -25,12 +25,16 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
         String token = getAuthenticationToken((HttpServletRequest) request);
 
         if (StringUtils.hasText(token) && tokenProvider.validate(token)) {
             Authentication authentication = tokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             log.debug("Save authentication information in SecurityContextHolder");
+        }
+        else if (((HttpServletRequest) request).getServletPath().equals("/login")) {
+            ((HttpServletResponse) response).sendRedirect("/oauth2/naver");
         }
 
         chain.doFilter(request, response);

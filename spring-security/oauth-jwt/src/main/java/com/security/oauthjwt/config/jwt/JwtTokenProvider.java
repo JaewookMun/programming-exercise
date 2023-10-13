@@ -54,7 +54,6 @@ public class JwtTokenProvider {
         hs256 = Jwts.SIG.HS256;
     }
 
-
     // create jwt
     public TokenDto create(Long userId) {
 
@@ -87,6 +86,8 @@ public class JwtTokenProvider {
     public boolean validate(String token) {
         log.info("validate token: {}", token);
         try {
+
+            token = separateTokenType(token);
             // Parse the compact JWS
             getPayloadOf(token);
 
@@ -97,6 +98,14 @@ public class JwtTokenProvider {
         }
     }
 
+    private String separateTokenType(String token) {
+        if (!token.contains(TOKEN_TYPE))
+            throw new IllegalArgumentException("not valid header information");
+
+        token = token.replace(TOKEN_TYPE + " ", "");
+        return token;
+    }
+
     private Claims getPayloadOf(String token) {
         return Jwts.parser()
                 .verifyWith(Keys.hmacShaKeyFor(keyBytes)).build()
@@ -104,7 +113,7 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String token) {
-        Long userId = Long.parseLong(getPayloadOf(token).getSubject());
+        Long userId = Long.parseLong(getPayloadOf(separateTokenType(token)).getSubject());
         User user = userRepository.findById(userId).get();
 
         CustomOauthUser customOauthUser = new CustomOauthUser(user.getId(), user.getEmail(), user.getName(), UUID.randomUUID().toString(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));

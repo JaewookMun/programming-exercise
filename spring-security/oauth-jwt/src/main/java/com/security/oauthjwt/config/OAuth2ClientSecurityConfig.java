@@ -28,9 +28,13 @@ public class OAuth2ClientSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .logout(logout -> logout.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(req -> req.anyRequest().authenticated())
                 .httpBasic(httpBasic -> httpBasic.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(req ->
+                        req
+                            .requestMatchers("/").permitAll()
+                            .requestMatchers("/api/**").authenticated()
+                            .anyRequest().permitAll())
                 .oauth2Login(
                         oauth -> oauth
                                     .userInfoEndpoint(userInfo -> userInfo.userService(oauth2UsersService))
