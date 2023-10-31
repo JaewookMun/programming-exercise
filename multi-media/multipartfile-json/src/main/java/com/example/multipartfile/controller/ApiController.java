@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -30,6 +27,9 @@ public class ApiController {
 
     }
 
+    // fruit 이름으로 {"name":"apple","color":"red"}를 보내면
+    // 400 error가 발생하지만 StringToRequestConverter.class를 사용해서 값들을 받을 수 있다.
+    // 이 때, 각 필드이름으로 값들을 전송하면 객체를 자동으로 초기화할 수 있다.
     @PostMapping("/v1")
 //    @PostMapping(path = "/v1", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Fruit apiV1(@RequestPart MultipartFile multipartFile, @ModelAttribute Fruit fruit) {
