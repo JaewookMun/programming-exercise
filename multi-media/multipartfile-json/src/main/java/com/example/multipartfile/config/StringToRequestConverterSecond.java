@@ -1,6 +1,5 @@
 package com.example.multipartfile.config;
 
-import com.example.multipartfile.dto.Fruit;
 import com.example.multipartfile.dto.RequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
