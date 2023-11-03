@@ -1,6 +1,7 @@
 package com.example.multipartfile.controller;
 
 import com.example.multipartfile.dto.Fruit;
+import com.example.multipartfile.dto.RequestDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -22,9 +23,15 @@ public class ApiController {
         Fruit fruit = new Fruit();
         fruit.setName("apple");
         fruit.setColor("red");
-        String v1 = objectMapper.writeValueAsString(fruit);
-        System.out.println(v1);
 
+        RequestDto requestDto = new RequestDto();
+        requestDto.setCity("Seoul");
+        requestDto.setFruit(fruit);
+
+        String jsonExample1 = objectMapper.writeValueAsString(fruit);
+        String jsonExample2 = objectMapper.writeValueAsString(requestDto);
+        System.out.println("jsonExample1 = " + jsonExample1);
+        System.out.println("jsonExample2 = " + jsonExample2);
     }
 
     // fruit 이름으로 {"name":"apple","color":"red"}를 보내면
@@ -34,11 +41,20 @@ public class ApiController {
 //    @PostMapping(path = "/v1", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Fruit apiV1(@RequestPart MultipartFile multipartFile, @ModelAttribute Fruit fruit) {
         boolean isEmpty = multipartFile.isEmpty();
-        System.out.println("isEmpty = " + isEmpty);
+        if (isEmpty) System.out.println("isEmpty = " + isEmpty);
+        System.out.println("fruit = " + fruit);
 
         return fruit;
     }
 
+    @PostMapping("/v2")
+    public RequestDto apiV2(@RequestPart MultipartFile multipartFile, @ModelAttribute RequestDto requestDto) {
+        boolean isEmpty = multipartFile.isEmpty();
+        if (isEmpty) System.out.println("isEmpty = " + isEmpty);
+        System.out.println("requestDto = " + requestDto);
+
+        return requestDto;
+    }
 
 
 }
