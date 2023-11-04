@@ -5,6 +5,7 @@ import com.example.multipartfile.dto.RequestDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,15 @@ public class ApiController {
         System.out.println("jsonExample2 = " + jsonExample2);
     }
 
+    @PostMapping(path = "/default")
+    public Fruit api(@RequestPart MultipartFile multipartFile, @RequestBody Fruit fruit) {
+        boolean isEmpty = multipartFile.isEmpty();
+        if (isEmpty) System.out.println("isEmpty = " + isEmpty);
+        System.out.println("fruit = " + fruit);
+
+        return fruit;
+    }
+
     // fruit 이름으로 {"name":"apple","color":"red"}를 보내면
     // 400 error가 발생하지만 StringToRequestConverter.class를 사용해서 값들을 받을 수 있다.
     // 이 때, 각 필드이름으로 값들을 전송하면 객체를 자동으로 초기화할 수 있다.
@@ -48,13 +58,14 @@ public class ApiController {
     }
 
     @PostMapping("/v2")
-    public RequestDto apiV2(@RequestPart MultipartFile multipartFile, @ModelAttribute RequestDto requestDto) {
+    public RequestDto apiV2(@RequestPart MultipartFile multipartFile, @ModelAttribute RequestDto requestDto, HttpServletRequest request) {
+        String parameter = request.getParameter("requestDto");
+        System.out.println("parameter = " + parameter);
+
         boolean isEmpty = multipartFile.isEmpty();
         if (isEmpty) System.out.println("isEmpty = " + isEmpty);
         System.out.println("requestDto = " + requestDto);
 
         return requestDto;
     }
-
-
 }
