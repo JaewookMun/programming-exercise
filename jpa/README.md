@@ -5,7 +5,7 @@ JPA를 활용한 스프링 프로젝트 저장소
 
 ### 1. Abstract
     - booklending : simple application using Spring Data jpa and Querydsl
-    - jpa-board : simple board function using Spring Data jpa framework
+    - jpa-board : simple board function using Spring Data jpa framework (thymeleaf layout 적용)
     - jpa-association : jpa association test on PK and UK condition
 
 <br><br>
@@ -26,6 +26,8 @@ JPA를 활용한 스프링 프로젝트 저장소
 <br>
 
 ### jpa-board
+
+- thymleaf layout 적용
 
 <br>
 
