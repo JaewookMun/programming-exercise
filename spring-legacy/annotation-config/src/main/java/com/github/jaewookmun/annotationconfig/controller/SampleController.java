@@ -10,10 +10,13 @@ public class SampleController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
-    public String hello()
-    {
-
+    public String hello() {
         return "hello";
+    }
+
+    @RequestMapping(value = "/hello-page", method = RequestMethod.GET)
+    public String helloPage() {
+        return "index";
     }
 
 }
