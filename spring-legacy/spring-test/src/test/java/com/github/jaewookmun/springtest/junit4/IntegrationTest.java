@@ -1,4 +1,4 @@
-package com.github.jaewookmun.springtest;
+package com.github.jaewookmun.springtest.junit4;
 
 import com.github.jaewookmun.springtest.config.ApplicationConfig;
 import com.github.jaewookmun.springtest.config.ServletConfig;
@@ -22,6 +22,7 @@ public class IntegrationTest
 
     @Test
     public void test() {
+        System.out.println("=== JUnit4 ===");
         ServletConfig servletConfig = wac.getBean(ServletConfig.class);
         System.out.println("servletConfig = " + servletConfig);
 
