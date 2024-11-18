@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: hello-kafka
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: hello-group
+      auto-offset-reset: earliest
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
