@@ -4,7 +4,7 @@ import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "customAnnotationDrivenEventListener")
 public class AnnotationDrivenEventListener {
     /**
      * 해당 리스너의 기본 상태는 동기적 호출이지만,
