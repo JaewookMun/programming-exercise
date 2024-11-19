@@ -1,3 +1,13 @@
+kafka:
+  topic: notifications
 spring:
   application:
     name: kafka-test-containers
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: collector
+      auto-offset-reset: earliest
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
