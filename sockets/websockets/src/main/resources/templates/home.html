@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Socket</title>
+    <script src="/modules/jquery/jquery.min.js"></script>
+    <script src="/modules/sockjs/sockjs.min.js"></script>
+    <script src="/modules/stomp/stomp.min.js"></script>
+</head>
+<body>
+    <div>
+        <div id="displayPanel" th:name="display"></div>
+        <div>
+            <input id="message" th:name="message"/>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    let stompClient = null;
+    connect();
+
+    function connect() {
+        stompClient = Stomp.client('ws://localhost:8080/ws');
+        stompClient.connect({}, function(frame) {
+            stompClient.subscribe('/topic/greetings', function(response) {
+                showGreeting(JSON.parse(response.body).content);
+            });
+        });
+    }
+
+    function showGreeting(message) {
+        $("#displayPanel").append("<tr><td>" + message + "</td></tr>");
+    }
+
+    function sendMessage() {
+        let message = document.getElementById("message").value;
+        stompClient.send("/app/hello", {}, JSON.stringify({'name': message}));
+    }
+</script>
+
+
