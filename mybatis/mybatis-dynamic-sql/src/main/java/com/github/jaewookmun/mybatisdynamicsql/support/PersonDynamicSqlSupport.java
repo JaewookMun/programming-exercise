@@ -6,7 +6,7 @@ import org.mybatis.dynamic.sql.SqlColumn;
 import java.sql.JDBCType;
 import java.time.LocalDateTime;
 
-public class PersonDynamicSqlSupport {
+public final class PersonDynamicSqlSupport {
     public static final Person person = new Person();
     public static final SqlColumn<Integer> id = person.id;
     public static final SqlColumn<String> firstName = person.firstName;
