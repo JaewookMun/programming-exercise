@@ -32,6 +32,34 @@ class PersonMapperTest {
         System.out.println(byId.get());
 
         personMapper.findAll().forEach(System.out::println);
+    }
 
+    @Test
+    void updateTest() {
+        int id = 1;
+        PersonRecord personRecord = personMapper.findById(id).get();
+        personRecord.setFirstName("Mun");
+        personRecord.setLastName("JW");
+        personRecord.setBirthDate(LocalDateTime.now());
+        personRecord.setEmployed(false);
+        personRecord.setOccupation("Dev");
+        personRecord.setAddressId(2);
+
+        personMapper.updateByPrimaryKey(personRecord);
+    }
+
+    @Test
+    void updateTest2() {
+        PersonRecord personRecord = new PersonRecord();
+        personRecord.setId(1);
+        personRecord.setFirstName("Kim");
+
+        personMapper.updateByPrimaryKey(personRecord);
+    }
+
+    @Test
+    void deleteTest() {
+        int id = 2;
+        personMapper.deleteByPrimaryKey(id);
     }
 }
