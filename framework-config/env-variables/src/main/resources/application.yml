@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: env-variables
+  profiles:
+    active: outer
+    group:
+      test: dev, debug
+  config:
+    import:
+      - classpath:external.yml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: inner-dev
+
+  application:
+    name: inner-dev-variables
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: inner-prod
+
+  application:
+    name: inner-prod-variables
+
+
+
