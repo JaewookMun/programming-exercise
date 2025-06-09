@@ -1,0 +1,3 @@
+rootProject.name = 'anno-processing-user'
+include 'annotation-processor'
+
