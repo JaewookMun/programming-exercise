@@ -1,0 +1,103 @@
+Jun 19 13:19:32 dnsmasq[19]: started, version 2.80 cachesize 150
+Jun 19 13:19:32 dnsmasq[19]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:19:32 dnsmasq[19]: using nameserver 1.1.1.1#53
+Jun 19 13:19:32 dnsmasq[19]: using nameserver 8.8.8.8#53
+Jun 19 13:19:32 dnsmasq[19]: read /etc/hosts - 7 addresses
+Jun 19 13:26:32 dnsmasq[28]: started, version 2.80 cachesize 150
+Jun 19 13:26:32 dnsmasq[28]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:26:32 dnsmasq[28]: using nameserver 1.1.1.1#53
+Jun 19 13:26:32 dnsmasq[28]: using nameserver 8.8.8.8#53
+Jun 19 13:26:32 dnsmasq[28]: read /etc/hosts - 7 addresses
+Jun 19 13:26:35 dnsmasq[29]: started, version 2.80 cachesize 150
+Jun 19 13:26:35 dnsmasq[29]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:26:35 dnsmasq[29]: using nameserver 1.1.1.1#53
+Jun 19 13:26:35 dnsmasq[29]: using nameserver 8.8.8.8#53
+Jun 19 13:26:35 dnsmasq[29]: read /etc/hosts - 7 addresses
+Jun 19 13:28:25 dnsmasq[30]: started, version 2.80 cachesize 150
+Jun 19 13:28:25 dnsmasq[30]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:28:25 dnsmasq[30]: using nameserver 1.1.1.1#53
+Jun 19 13:28:25 dnsmasq[30]: using nameserver 1.0.0.1#53
+Jun 19 13:28:25 dnsmasq[30]: read /etc/hosts - 7 addresses
+Jun 19 13:28:26 dnsmasq[31]: started, version 2.80 cachesize 150
+Jun 19 13:28:26 dnsmasq[31]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:28:26 dnsmasq[31]: using nameserver 1.1.1.1#53
+Jun 19 13:28:26 dnsmasq[31]: using nameserver 1.0.0.1#53
+Jun 19 13:28:26 dnsmasq[31]: read /etc/hosts - 7 addresses
+Jun 19 13:29:20 dnsmasq[32]: started, version 2.80 cachesize 150
+Jun 19 13:29:20 dnsmasq[32]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:29:20 dnsmasq[32]: using nameserver 1.1.1.1#53
+Jun 19 13:29:20 dnsmasq[32]: using nameserver 1.0.0.1#53
+Jun 19 13:29:20 dnsmasq[32]: read /etc/hosts - 7 addresses
+Jun 19 13:29:24 dnsmasq[33]: started, version 2.80 cachesize 150
+Jun 19 13:29:24 dnsmasq[33]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:29:24 dnsmasq[33]: using nameserver 1.1.1.1#53
+Jun 19 13:29:24 dnsmasq[33]: using nameserver 1.0.0.1#53
+Jun 19 13:29:24 dnsmasq[33]: read /etc/hosts - 7 addresses
+Jun 19 13:29:38 dnsmasq[34]: started, version 2.80 cachesize 150
+Jun 19 13:29:38 dnsmasq[34]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:29:38 dnsmasq[34]: using nameserver 1.1.1.1#53
+Jun 19 13:29:38 dnsmasq[34]: using nameserver 1.0.0.1#53
+Jun 19 13:29:38 dnsmasq[34]: read /etc/hosts - 7 addresses
+Jun 19 13:29:48 dnsmasq[35]: started, version 2.80 cachesize 150
+Jun 19 13:29:48 dnsmasq[35]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:29:48 dnsmasq[35]: using nameserver 1.1.1.1#53
+Jun 19 13:29:48 dnsmasq[35]: using nameserver 1.0.0.1#53
+Jun 19 13:29:48 dnsmasq[35]: read /etc/hosts - 7 addresses
+Jun 19 13:29:48 dnsmasq[35]: query[PTR] 1.0.0.127.in-addr.arpa from 172.18.0.1
+Jun 19 13:29:48 dnsmasq[35]: /etc/hosts 127.0.0.1 is localhost
+Jun 19 13:29:48 dnsmasq[35]: query[A] a.test.local from 172.18.0.1
+Jun 19 13:29:48 dnsmasq[35]: config a.test.local is 172.31.0.54
+Jun 19 13:29:48 dnsmasq[35]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:29:48 dnsmasq[35]: config a.test.local is NODATA-IPv6
+Jun 19 13:30:20 dnsmasq[37]: started, version 2.80 cachesize 150
+Jun 19 13:30:20 dnsmasq[37]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:30:20 dnsmasq[37]: using nameserver 1.1.1.1#53
+Jun 19 13:30:20 dnsmasq[37]: using nameserver 8.8.8.8#53
+Jun 19 13:30:20 dnsmasq[37]: read /etc/hosts - 7 addresses
+Jun 19 13:30:30 dnsmasq[38]: started, version 2.80 cachesize 150
+Jun 19 13:30:30 dnsmasq[38]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:30:30 dnsmasq[38]: using nameserver 1.1.1.1#53
+Jun 19 13:30:30 dnsmasq[38]: using nameserver 8.8.8.8#53
+Jun 19 13:30:30 dnsmasq[38]: read /etc/hosts - 7 addresses
+Jun 19 13:30:32 dnsmasq[38]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:30:32 dnsmasq[38]: config a.test.local is NODATA-IPv6
+Jun 19 13:30:50 dnsmasq[39]: started, version 2.80 cachesize 150
+Jun 19 13:30:50 dnsmasq[39]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:30:50 dnsmasq[39]: using nameserver 1.1.1.1#53
+Jun 19 13:30:50 dnsmasq[39]: using nameserver 1.0.0.1#53
+Jun 19 13:30:50 dnsmasq[39]: read /etc/hosts - 7 addresses
+Jun 19 13:31:00 dnsmasq[40]: started, version 2.80 cachesize 150
+Jun 19 13:31:00 dnsmasq[40]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:31:00 dnsmasq[40]: using nameserver 1.1.1.1#53
+Jun 19 13:31:00 dnsmasq[40]: using nameserver 1.0.0.1#53
+Jun 19 13:31:00 dnsmasq[40]: read /etc/hosts - 7 addresses
+Jun 19 13:31:02 dnsmasq[40]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:31:02 dnsmasq[40]: config a.test.local is NODATA-IPv6
+Jun 19 13:31:02 dnsmasq[40]: query[A] a.test.local from 172.18.0.1
+Jun 19 13:31:02 dnsmasq[40]: config a.test.local is 172.31.0.54
+Jun 19 13:31:02 dnsmasq[40]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:31:02 dnsmasq[40]: config a.test.local is NODATA-IPv6
+Jun 19 13:31:17 dnsmasq[41]: started, version 2.80 cachesize 150
+Jun 19 13:31:17 dnsmasq[41]: compile time options: IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP DHCPv6 no-Lua TFTP no-conntrack ipset auth no-DNSSEC loop-detect inotify dumpfile
+Jun 19 13:31:17 dnsmasq[41]: using nameserver 1.1.1.1#53
+Jun 19 13:31:17 dnsmasq[41]: using nameserver 1.0.0.1#53
+Jun 19 13:31:17 dnsmasq[41]: read /etc/hosts - 7 addresses
+Jun 19 13:31:18 dnsmasq[41]: query[PTR] 1.0.0.127.in-addr.arpa from 172.18.0.1
+Jun 19 13:31:18 dnsmasq[41]: /etc/hosts 127.0.0.1 is localhost
+Jun 19 13:31:18 dnsmasq[41]: query[A] a.test.local from 172.18.0.1
+Jun 19 13:31:18 dnsmasq[41]: config a.test.local is 172.31.0.54
+Jun 19 13:31:18 dnsmasq[41]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:31:18 dnsmasq[41]: config a.test.local is NODATA-IPv6
+Jun 19 13:31:19 dnsmasq[41]: query[PTR] 1.0.0.127.in-addr.arpa from 172.18.0.1
+Jun 19 13:31:19 dnsmasq[41]: /etc/hosts 127.0.0.1 is localhost
+Jun 19 13:31:19 dnsmasq[41]: query[A] a.test.local from 172.18.0.1
+Jun 19 13:31:19 dnsmasq[41]: config a.test.local is 172.31.0.54
+Jun 19 13:31:19 dnsmasq[41]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:31:19 dnsmasq[41]: config a.test.local is NODATA-IPv6
+Jun 19 13:31:21 dnsmasq[41]: query[PTR] 1.0.0.127.in-addr.arpa from 172.18.0.1
+Jun 19 13:31:21 dnsmasq[41]: /etc/hosts 127.0.0.1 is localhost
+Jun 19 13:31:21 dnsmasq[41]: query[A] a.test.local from 172.18.0.1
+Jun 19 13:31:21 dnsmasq[41]: config a.test.local is 172.31.0.54
+Jun 19 13:31:21 dnsmasq[41]: query[AAAA] a.test.local from 172.18.0.1
+Jun 19 13:31:21 dnsmasq[41]: config a.test.local is NODATA-IPv6
+Jun 19 13:31:34 dnsmasq[41]: exiting on receipt of SIGTERM

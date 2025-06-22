@@ -1,0 +1,14 @@
+services:
+  dns:
+    image: jpillora/dnsmasq:latest
+    container_name: dns
+    ports:
+      - "53:53/udp"
+      - "11010:8080"
+    environment:
+      - HTTP_USER=admin
+      - HTTP_PASS=Admin123$
+    volumes:
+      - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
+      - ./dnsmasq/logs:/var/log/
+    restart: unless-stopped
