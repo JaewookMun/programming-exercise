@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: cors-resources
+
+server:
+  port: 10000
