@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS 테스트 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            min-height: 50px;
+        }
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>CORS 테스트 페이지</h1>
+    <p>버튼을 클릭하여 <code>http://localhost:10000/cors/text</code>에서 데이터를 가져옵니다.</p>
+    
+    <button onclick="fetchCorsData()">CORS 요청 보내기</button>
+    
+    <div id="result">
+        <em>결과가 여기에 표시됩니다.</em>
+    </div>
+
+    <script>
+        async function fetchCorsData() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '요청 중...';
+            resultDiv.className = '';
+            
+            try {
+                const response = await fetch('http://localhost:10000/cors/simple-request');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                resultDiv.innerHTML = `<strong>성공:</strong> ${text}`;
+                resultDiv.className = 'success';
+            } catch (error) {
+                resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
+                resultDiv.className = 'error';
+                console.error('CORS 요청 실패:', error);
+            }
+        }
+    </script>
+</body>
+</html>
