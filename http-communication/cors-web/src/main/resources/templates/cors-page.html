@@ -23,7 +23,7 @@
         button:hover {
             background-color: #0056b3;
         }
-        #result {
+        .result {
             margin-top: 20px;
             padding: 15px;
             border: 1px solid #ddd;
@@ -49,19 +49,23 @@
     
     <button onclick="fetchCorsData()">CORS 요청 보내기</button>
     
+    <div id="simple-result" class="result">
+        <em>단순요청 결과가 여기에 표시됩니다.</em>
+    </div>
+    
     <p>2. 사전 검증 요청 - 버튼을 클릭하여 <code>http://localhost:10000/cors/preflighted-request</code>에 커스텀 헤더와 함께 요청을 보냅니다.</p>
     
     <button onclick="fetchPreflightedData()">사전 검증 요청 보내기</button>
     
-    <div id="result">
-        <em>결과가 여기에 표시됩니다.</em>
+    <div id="preflighted-result" class="result">
+        <em>사전 검증 요청 결과가 여기에 표시됩니다.</em>
     </div>
 
     <script>
         async function fetchCorsData() {
-            const resultDiv = document.getElementById('result');
+            const resultDiv = document.getElementById('simple-result');
             resultDiv.innerHTML = '요청 중...';
-            resultDiv.className = '';
+            resultDiv.className = 'result';
             
             try {
                 const response = await fetch('http://localhost:10000/cors/simple-request');
@@ -72,7 +76,7 @@
                 
                 const text = await response.text();
                 resultDiv.innerHTML = `<strong>성공:</strong> ${text}`;
-                resultDiv.className = 'success';
+                resultDiv.className = 'result success';
             } catch (error) {
                 resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
                 resultDiv.className = 'error';
@@ -81,9 +85,9 @@
         }
 
         async function fetchPreflightedData() {
-            const resultDiv = document.getElementById('result');
+            const resultDiv = document.getElementById('preflighted-result');
             resultDiv.innerHTML = '사전 검증 요청 중...';
-            resultDiv.className = '';
+            resultDiv.className = 'result';
             
             try {
                 const response = await fetch('http://localhost:10000/cors/preflighted-request', {
@@ -99,7 +103,7 @@
                 
                 const text = await response.text();
                 resultDiv.innerHTML = `<strong>성공:</strong> ${text}`;
-                resultDiv.className = 'success';
+                resultDiv.className = 'result success';
             } catch (error) {
                 resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
                 resultDiv.className = 'error';
