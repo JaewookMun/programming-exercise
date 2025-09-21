@@ -45,9 +45,13 @@
 </head>
 <body>
     <h1>CORS 테스트 페이지</h1>
-    <p>버튼을 클릭하여 <code>http://localhost:10000/cors/text</code>에서 데이터를 가져옵니다.</p>
+    <p>1. 단순요청 - 버튼을 클릭하여 <code>http://localhost:10000/cors/simple-request</code>에서 데이터를 가져옵니다.</p>
     
     <button onclick="fetchCorsData()">CORS 요청 보내기</button>
+    
+    <p>2. 사전 검증 요청 - 버튼을 클릭하여 <code>http://localhost:10000/cors/preflighted-request</code>에 커스텀 헤더와 함께 요청을 보냅니다.</p>
+    
+    <button onclick="fetchPreflightedData()">사전 검증 요청 보내기</button>
     
     <div id="result">
         <em>결과가 여기에 표시됩니다.</em>
@@ -73,6 +77,33 @@
                 resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
                 resultDiv.className = 'error';
                 console.error('CORS 요청 실패:', error);
+            }
+        }
+
+        async function fetchPreflightedData() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '사전 검증 요청 중...';
+            resultDiv.className = '';
+            
+            try {
+                const response = await fetch('http://localhost:10000/cors/preflighted-request', {
+                    method: 'GET',
+                    headers: {
+                        'Custom-Header-Text': '2005 year'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                resultDiv.innerHTML = `<strong>성공:</strong> ${text}`;
+                resultDiv.className = 'success';
+            } catch (error) {
+                resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
+                resultDiv.className = 'error';
+                console.error('사전 검증 요청 실패:', error);
             }
         }
     </script>
