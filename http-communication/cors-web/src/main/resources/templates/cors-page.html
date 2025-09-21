@@ -60,6 +60,14 @@
     <div id="preflighted-result" class="result">
         <em>사전 검증 요청 결과가 여기에 표시됩니다.</em>
     </div>
+    
+    <p>3. 자격증명을 포함한 요청 - 버튼을 클릭하여 <code>http://localhost:10000/cors/credentialed-request</code>에 쿠키와 자격증명을 포함하여 요청을 보냅니다.</p>
+    
+    <button onclick="fetchCredentialedData()">자격증명 요청 보내기</button>
+    
+    <div id="credentialed-result" class="result">
+        <em>자격증명 요청 결과가 여기에 표시됩니다.</em>
+    </div>
 
     <script>
         async function fetchCorsData() {
@@ -108,6 +116,33 @@
                 resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
                 resultDiv.className = 'error';
                 console.error('사전 검증 요청 실패:', error);
+            }
+        }
+
+        async function fetchCredentialedData() {
+            const resultDiv = document.getElementById('credentialed-result');
+            resultDiv.innerHTML = '자격증명 요청 중...';
+            resultDiv.className = 'result';
+            
+            document.cookie = 'sample-session-cookie=request; path=/';
+            
+            try {
+                const response = await fetch('http://localhost:10000/cors/credentialed-request', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                resultDiv.innerHTML = `<strong>성공:</strong> ${text}`;
+                resultDiv.className = 'result success';
+            } catch (error) {
+                resultDiv.innerHTML = `<strong>오류:</strong> ${error.message}`;
+                resultDiv.className = 'error';
+                console.error('자격증명 요청 실패:', error);
             }
         }
     </script>
